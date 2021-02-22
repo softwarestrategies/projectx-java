@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+
+  postgresql:
+    image: postgres:13.0-alpine
+    container_name: projectx-java-postgresql
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=changeme
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./docker-local-data/postgresql/data:/var/lib/postgresql/data
+      - ./scripts/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    restart: always
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:12.0.2
+    container_name: projectx-java-keycloak
+    restart: always
+    environment:
+      DB_VENDOR: POSTGRES
+      DB_ADDR: postgresql
+      DB_SCHEMA: public
+      DB_DATABASE: keycloak
+      DB_USER: keycloak_admin
+      DB_PASSWORD: changeme
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: changeme
+      # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
+      #JDBC_PARAMS: "ssl=true"
+    ports:
+      - "8484:8080"
+      - "8443:8443"
+    depends_on:
+      - postgresql
+
