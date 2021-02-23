@@ -1,6 +1,5 @@
 package io.softwarestrategies.projectx.resource.data.dto;
 
-import io.softwarestrategies.projectx.resource.data.entity.Project;
 import io.softwarestrategies.projectx.resource.data.enums.ProjectStatus;
 import lombok.Data;
 
@@ -12,4 +11,6 @@ public class ProjectDTO {
     private String description;
     private Integer userId;
     private ProjectStatus projectStatus;
+
+    public ProjectDTO() {}
 }

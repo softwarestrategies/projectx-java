@@ -1,9 +1,8 @@
 package io.softwarestrategies.projectx.ui.controller;
 
-import io.softwarestrategies.projectx.ui.data.ProjectDTO;
+import io.softwarestrategies.projectx.ui.data.dto.ProjectDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,7 +25,8 @@ public class ProjectController {
     public String getProjects(Model model) {
         List<ProjectDTO> projects = webClient.get().uri(projectApiUrl).accept(MediaType.APPLICATION_JSON)
                 .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<List<ProjectDTO>>() {})
+                .bodyToFlux(ProjectDTO.class)
+                .collectList()
                 .block();
         model.addAttribute("projects", projects);
         return "projects";

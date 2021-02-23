@@ -4,18 +4,20 @@ import io.r2dbc.spi.Row;
 import io.softwarestrategies.projectx.resource.data.dto.ProjectDTO;
 import io.softwarestrategies.projectx.resource.data.entity.Project;
 import io.softwarestrategies.projectx.resource.data.enums.ProjectStatus;
+import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
 
 public class ProjectConverters {
 
-    public static ProjectDTO toProjectDTO(Project project) {
+    public static Mono<ProjectDTO> toProjectDTO(Project project) {
         ProjectDTO projectDTO = new ProjectDTO();
         projectDTO.setId(project.getId());
         projectDTO.setName(project.getName());
         projectDTO.setDescription(project.getDescription());
         projectDTO.setUserId(project.getUserId());
-        return projectDTO;
+        projectDTO.setProjectStatus(project.getStatus());
+        return Mono.just(projectDTO);
     }
 
     public static Project toProject(ProjectDTO projectDTO) {
