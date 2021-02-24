@@ -24,7 +24,7 @@ public class ProjectApiController {
     }
 
     @GetMapping("/{id}")
-    public Mono<ProjectDTO> handleFindById(Integer id) {
+    public Mono<ProjectDTO> handleFindById(@PathVariable Integer id) {
         return projectService.findById(id).flatMap(ProjectConverters::toProjectDTO);
     }
 
