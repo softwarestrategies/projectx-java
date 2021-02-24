@@ -1,6 +1,6 @@
 package io.softwarestrategies.projectx.resource.controller;
 
-import io.softwarestrategies.projectx.resource.data.dto.ProjectDTO;
+import io.softwarestrategies.projectx.common.data.dto.ProjectDTO;
 import io.softwarestrategies.projectx.resource.data.entity.Project;
 import io.softwarestrategies.projectx.resource.data.utils.ProjectConverters;
 import io.softwarestrategies.projectx.resource.service.ProjectService;

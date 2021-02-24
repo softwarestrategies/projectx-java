@@ -1,7 +1,7 @@
 package io.softwarestrategies.projectx.resource.data.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.softwarestrategies.projectx.resource.data.enums.Status;
+import io.softwarestrategies.projectx.common.data.enums.Status;
 import lombok.Data;
 import org.springframework.data.annotation.*;
 import org.springframework.data.relational.core.mapping.Column;

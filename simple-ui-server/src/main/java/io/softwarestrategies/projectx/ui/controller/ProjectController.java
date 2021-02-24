@@ -1,7 +1,7 @@
 package io.softwarestrategies.projectx.ui.controller;
 
-import io.softwarestrategies.projectx.ui.data.dto.ProjectDTO;
-import io.softwarestrategies.projectx.ui.data.enums.Status;
+import io.softwarestrategies.projectx.common.data.dto.ProjectDTO;
+import io.softwarestrategies.projectx.common.data.enums.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;

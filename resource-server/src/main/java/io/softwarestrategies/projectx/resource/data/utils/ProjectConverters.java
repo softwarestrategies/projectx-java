@@ -1,9 +1,9 @@
 package io.softwarestrategies.projectx.resource.data.utils;
 
 import io.r2dbc.spi.Row;
-import io.softwarestrategies.projectx.resource.data.dto.ProjectDTO;
+import io.softwarestrategies.projectx.common.data.dto.ProjectDTO;
+import io.softwarestrategies.projectx.common.data.enums.Status;
 import io.softwarestrategies.projectx.resource.data.entity.Project;
-import io.softwarestrategies.projectx.resource.data.enums.Status;
 import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;

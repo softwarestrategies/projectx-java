@@ -1,4 +1,4 @@
-package io.softwarestrategies.projectx.ui.data.enums;
+package io.softwarestrategies.projectx.common.data.enums;
 
 public enum Status {
     NEW("N"),

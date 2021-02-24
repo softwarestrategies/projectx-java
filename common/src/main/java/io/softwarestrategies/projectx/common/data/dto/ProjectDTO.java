@@ -1,6 +1,6 @@
-package io.softwarestrategies.projectx.ui.data.dto;
+package io.softwarestrategies.projectx.common.data.dto;
 
-import io.softwarestrategies.projectx.ui.data.enums.Status;
+import io.softwarestrategies.projectx.common.data.enums.Status;
 import lombok.Data;
 
 @Data

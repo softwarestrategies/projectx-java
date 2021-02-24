@@ -65,11 +65,11 @@ Create these 2 Roles:  **"ADMIN"** and **"USER"**.
 Create a User named **"admin.test@softwarestrategies.io"**, assigning it the two roles **"USER"** and **"ADMIN"** (from
 the "Role Mappings" tab) and setting its password (from the "Credentials" tab) to **"admin"**
 
-Create a User named **"user1.test@softwarestrategies.io"**, assigning it the one role **"USER"** and setting its
-password to **"user1"**
+Create a User named **"user.test@softwarestrategies.io"**, assigning it the one role **"USER"** and setting its
+password to **"user"**
 
-Create a User named **"user2.test@softwarestrategies.io"**, assigning it the one role **"USER"** and setting its
-password to **"user2"**
+Create a User named **"monitor.test@softwarestrategies.io"**, assigning it the one role **"USER"** and setting its
+password to **"monitor"**
 
 #### D) Create Client Scope(s)
 
