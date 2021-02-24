@@ -1,6 +1,6 @@
 package io.softwarestrategies.projectx.resource.data.enums;
 
-public enum ProjectStatus {
+public enum Status {
     NEW("N"),
     PENDING("P"),
     ACTIVE("A"),
@@ -11,7 +11,7 @@ public enum ProjectStatus {
 
     private final String abbreviation;
 
-    ProjectStatus(String abbreviation) {
+    Status(String abbreviation) {
         this.abbreviation = abbreviation;
     }
 
@@ -19,12 +19,21 @@ public enum ProjectStatus {
         return this.abbreviation;
     }
 
-    public static ProjectStatus fromAbbreviation(String abbr) {
-        for (ProjectStatus status : ProjectStatus.values()) {
+    public static Status fromAbbreviation(String abbr) {
+        for (Status status : Status.values()) {
             if (status.abbreviation.equalsIgnoreCase(abbr)) {
                 return status;
             }
         }
         throw new UnsupportedOperationException("This ProjectStatus abbreviation is not supported: " + abbr);
+    }
+
+    public static Status fromName(String name) {
+        for (Status status : Status.values()) {
+            if (status.name().equalsIgnoreCase(name)) {
+                return status;
+            }
+        }
+        throw new UnsupportedOperationException("This ProjectStatus name is not supported: " + name);
     }
 }

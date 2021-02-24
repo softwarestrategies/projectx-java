@@ -1,6 +1,7 @@
 package io.softwarestrategies.projectx.ui.controller;
 
 import io.softwarestrategies.projectx.ui.data.dto.ProjectDTO;
+import io.softwarestrategies.projectx.ui.data.enums.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
@@ -40,6 +41,8 @@ public class ProjectController {
 
     @PostMapping("/projects")
     public String saveProject(ProjectDTO projectDTO, Model model) {
+        projectDTO.setStatus(Status.NEW.name());
+
         try {
             webClient.post()
                     .uri(projectApiUrl)

@@ -3,7 +3,7 @@ package io.softwarestrategies.projectx.resource.data.utils;
 import io.r2dbc.spi.Row;
 import io.softwarestrategies.projectx.resource.data.dto.ProjectDTO;
 import io.softwarestrategies.projectx.resource.data.entity.Project;
-import io.softwarestrategies.projectx.resource.data.enums.ProjectStatus;
+import io.softwarestrategies.projectx.resource.data.enums.Status;
 import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
@@ -15,8 +15,7 @@ public class ProjectConverters {
         projectDTO.setId(project.getId());
         projectDTO.setName(project.getName());
         projectDTO.setDescription(project.getDescription());
-        projectDTO.setUserId(project.getUserId());
-        projectDTO.setProjectStatus(project.getStatus());
+        projectDTO.setStatus(project.getStatus().name());
         return Mono.just(projectDTO);
     }
 
@@ -25,8 +24,7 @@ public class ProjectConverters {
         project.setId(projectDTO.getId());
         project.setName(projectDTO.getName());
         project.setDescription(projectDTO.getDescription());
-        project.setUserId(projectDTO.getUserId());
-        project.setStatus(projectDTO.getProjectStatus());
+        project.setStatus(Status.fromName(projectDTO.getStatus()));
         return project;
     }
 
@@ -48,10 +46,9 @@ public class ProjectConverters {
         if (rowHasValue(row,"modified_on")) { project.setModifiedOn((LocalDateTime) row.get("modified_on") ); }
         if (rowHasValue(row,"created_by"))  { project.setCreatedBy((String) row.get("created_by") ); }
         if (rowHasValue(row,"modified_by")) { project.setModifiedBy((String) row.get("modified_by") ); }
-        if (rowHasValue(row,"user_id"))     { project.setUserId((Integer) row.get("user_id") ); }
         if (rowHasValue(row,"name"))        { project.setName((String) row.get("name") ); }
         if (rowHasValue(row,"description")) { project.setDescription((String) row.get("description") ); }
-        if (rowHasValue(row,"status"))      { project.setStatus(ProjectStatus.fromAbbreviation((String) row.get("status"))); }
+        if (rowHasValue(row,"status"))      { project.setStatus(Status.fromAbbreviation((String) row.get("status"))); }
         return project;
     }
 }

@@ -1,7 +1,7 @@
 package io.softwarestrategies.projectx.resource.data.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.softwarestrategies.projectx.resource.data.enums.ProjectStatus;
+import io.softwarestrategies.projectx.resource.data.enums.Status;
 import lombok.Data;
 import org.springframework.data.annotation.*;
 import org.springframework.data.relational.core.mapping.Column;
@@ -47,9 +47,6 @@ public class Project {
     @Column("description")
     private String description;
 
-    @Column("user_id")
-    private Integer userId;
-
     @Column("status")
-    private ProjectStatus status;
+    private Status status;
 }
