@@ -8,12 +8,12 @@ perpetual work-in-progress (and sometimes, kinda broken) and not a know-all end-
 **Technologies used:**
 
 - Java
-- Spring Boot (including Spring WebMVC, Spring Cloud, Spring Data, Spring Security, Spring WebFlux)
-- Reactive
+- Spring Boot (including Spring Cloud, Spring Data, Spring Security, Spring WebFlux)
 - Docker
 - PostgreSQL (with R2DBC)
 - Keycloak (as an OAuth 2.0 Authorization Server)
 - Testing (JUnit 5 and Testcontainers)
+- Simple UI (Thymeleaf, Spring WebMVC)
 
 ## Initial Setup
 
