@@ -27,7 +27,7 @@ public class ProjectController {
     @Autowired
     private WebClient webClient;
 
-    @GetMapping({ "/view-project", "/view-project/{id}" })
+    @GetMapping({ "/project", "/project/{id}" })
     public String addNewProject(@PathVariable(required = false) Integer id, Model model) {
         ProjectDTO projectDTO = new ProjectDTO();
 
@@ -39,13 +39,13 @@ public class ProjectController {
         }
 
         model.addAttribute("project", projectDTO);
-        return "view-project";
+        return "project";
     }
 
-    @PostMapping("/view-project")
+    @PostMapping("/project")
     public String saveProject(@Valid @ModelAttribute("project") ProjectDTO projectDTO, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            return "view-project";
+            return "project";
         }
 
         try {
@@ -71,7 +71,7 @@ public class ProjectController {
         catch (Exception e) {
             log.error("Unable to save project: " + e.getMessage());
             model.addAttribute("globalError", "Unable to save project");
-            return "view-project";
+            return "project";
         }
     }
 

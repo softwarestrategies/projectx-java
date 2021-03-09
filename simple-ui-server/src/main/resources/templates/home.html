@@ -14,7 +14,7 @@
     <section class="jumbotron text-center">
         <div class="container">
             <h1>Projects:</h1>
-            <a th:href="@{/view-project}" class="btn btn-primary float-right">Create Project</a> <br /> <br />
+            <a th:href="@{/project}" class="btn btn-primary float-right">Create Project</a> <br /> <br />
             <table class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -30,7 +30,7 @@
                     <td><span th:text="${project.id}"> ID </span></td>
                     <td><span th:text="${project.name}"> Name </span></td>
                     <td>
-                        <a class="btn btn-secondary" th:href="@{'/view-project/' + ${project.id}}">View</a>
+                        <a class="btn btn-secondary" th:href="@{'/project/' + ${project.id}}">View</a>
                         <a class="btn btn-secondary" th:href="@{'/delete-project/' + ${project.id}}">Delete</a>
                     </td>
                 </tr>

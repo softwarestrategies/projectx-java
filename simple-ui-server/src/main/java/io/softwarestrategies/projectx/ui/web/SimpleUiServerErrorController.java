@@ -4,7 +4,7 @@ import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
@@ -12,19 +12,14 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class SimpleUiServerErrorController implements ErrorController {
 
-//    private static final Logger logger = LoggerFactory.getLogger(ProjectxUiServerErrorController.class);
-
-    @PostMapping("/error")
+    @RequestMapping("/error")
     public String handleError(HttpServletRequest request, Model model) {
-        Exception exception = (Exception) request.getAttribute("javax.servlet.error.exception");
-
-//        logger.error("Unhandled Exception caught by UI", exception);
-
         String errorTitle = "Sorry!";
         String errorMessage = "Something went wrong.  We are working on it.";
         String errorPage = "error";
 
         Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
+
         if (status != null) {
             int statusCode = Integer.parseInt(status.toString());
 

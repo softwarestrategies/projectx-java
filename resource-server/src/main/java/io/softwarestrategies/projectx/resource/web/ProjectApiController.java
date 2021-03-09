@@ -35,8 +35,8 @@ public class ProjectApiController {
     }
 
     @PatchMapping("/{id}")
-    public Mono<ProjectDTO> handlePatch(@PathVariable Integer id, @RequestBody Project project) {
-        return projectService.patch(id, project).flatMap(ProjectConverters::toProjectDTO);
+    public Mono<Void> handlePatch(@PathVariable Integer id, @RequestBody Project project) {
+        return projectService.patch(id, project).then();
     }
 
     @DeleteMapping("/{id}")

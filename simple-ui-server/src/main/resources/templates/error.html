@@ -15,8 +15,11 @@
             <h1 class="jumbotron-heading" th:text="${errorTitle}">Oops!</h1>
             <p class="lead text-muted" th:text="${errorMessage}">Something unexpected went wrong.</p>
 
+            <div th:if="${#authentication ne null and #authentication.name == 'anonymousUser'}">
+                <p><a class="p-2" th:href="@{/}">Continue</a></p>
+            </div>
             <div th:if="${#authentication ne null and #authentication.name != 'anonymousUser'}">
-                <p><a class="p-2" th:href="${'/ui-server/home'}">Home</a></p>
+                <p><a class="p-2" th:href="@{/home}">Continue</a></p>
             </div>
         </div>
     </section>

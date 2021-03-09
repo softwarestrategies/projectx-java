@@ -13,7 +13,7 @@
 <main role="main" layout:fragment="content">
     <section class="jumbotron text-center">
         <div class="container">
-            <form method="POST" class="project-form" th:action="@{/view-project}" th:object="${project}">
+            <form method="POST" class="project-form" th:action="@{/project}" th:object="${project}">
                 <h2>Edit Project</h2>
                 <div th:if="${globalError}">
                     <div class="global-error-block">
