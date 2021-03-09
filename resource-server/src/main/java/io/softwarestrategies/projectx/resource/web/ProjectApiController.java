@@ -1,6 +1,7 @@
-package io.softwarestrategies.projectx.resource.controller;
+package io.softwarestrategies.projectx.resource.web;
 
 import io.softwarestrategies.projectx.common.data.dto.ProjectDTO;
+import io.softwarestrategies.projectx.common.exceptions.EntityNotFoundException;
 import io.softwarestrategies.projectx.resource.data.entity.Project;
 import io.softwarestrategies.projectx.resource.data.utils.ProjectConverters;
 import io.softwarestrategies.projectx.resource.service.ProjectService;
@@ -29,13 +30,13 @@ public class ProjectApiController {
     }
 
     @PostMapping
-    public Mono<Project> handlePost(@RequestBody ProjectDTO projectDTO) {
+    public Mono<Project> handlePost(@RequestBody ProjectDTO projectDTO) throws EntityNotFoundException {
         return projectService.create(ProjectConverters.toProject(projectDTO));
     }
 
-    @PutMapping("/{id}")
-    public Mono<ProjectDTO> handlePut(@PathVariable Integer id, @RequestBody Project project) {
-        return projectService.update(id, project).flatMap(ProjectConverters::toProjectDTO);
+    @PatchMapping("/{id}")
+    public Mono<ProjectDTO> handlePatch(@PathVariable Integer id, @RequestBody Project project) {
+        return projectService.patch(id, project).flatMap(ProjectConverters::toProjectDTO);
     }
 
     @DeleteMapping("/{id}")

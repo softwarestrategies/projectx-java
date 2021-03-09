@@ -1,9 +1,8 @@
 package io.softwarestrategies.projectx.resource.service;
 
+import io.softwarestrategies.projectx.common.exceptions.EntityNotFoundException;
 import io.softwarestrategies.projectx.resource.data.entity.Project;
-import io.softwarestrategies.projectx.resource.data.repository.ProjectCustomRepository;
 import io.softwarestrategies.projectx.resource.data.repository.ProjectRepository;
-import io.softwarestrategies.projectx.resource.exception.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Flux;
@@ -14,12 +13,9 @@ import reactor.core.publisher.Mono;
 public class ProjectServiceImpl implements ProjectService {
 
     private final ProjectRepository projectRepository;
-    private final ProjectCustomRepository projectCustomRepository;
 
-    public ProjectServiceImpl(
-            ProjectRepository projectRepository,ProjectCustomRepository projectCustomRepository) {
+    public ProjectServiceImpl(ProjectRepository projectRepository) {
         this.projectRepository = projectRepository;
-        this.projectCustomRepository = projectCustomRepository;
     }
 
     @Override
@@ -38,13 +34,16 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public Mono<Project> create(Project project) {
-        return projectRepository.save(project);
+        return projectRepository.save(project)
+                .onErrorResume(e -> Mono.error(new RuntimeException(e.getMessage())));
     }
 
     @Override
-    public Mono<Project> update(Integer id, Project project) {
+    public Mono<Project> patch(Integer id, Project project) {
         return findById(id)
                 .flatMap(p -> {
+                    p.setName(project.getName());
+                    p.setDescription(project.getDescription());
                     p.setStatus(project.getStatus());
                     return projectRepository.save(p);
                 })

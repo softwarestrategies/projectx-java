@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout/layout">
+
+<head>
+    <title>Edit/View Project</title>
+    <meta name="keywords" content=""/>
+    <link rel="stylesheet" th:href="@{/css/projectx-ui.css}"/>
+</head>
+
+<body>
+
+<main role="main" layout:fragment="content">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <form method="POST" class="project-form" th:action="@{/view-project}" th:object="${project}">
+                <h2>Edit Project</h2>
+                <div th:if="${globalError}">
+                    <div class="global-error-block">
+                        <span th:text="${globalError}"></span>
+                    </div>
+                </div>
+                <div class="form-group project-form-controls align-items-center">
+                    <div class="form-group row">
+                        <div class="col-sm-8">
+                            <input id="name" type="text" class="form-control validate" th:field="*{name}"
+                                   data-length="50" maxlength="50" required="required" placeholder="Name">
+                            <span class="global-error-block" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">*</span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-8">
+							<textarea id="description" class="form-control validate" placeholder="Description"
+                                      data-length="255"
+                                      th:field="*{description}" maxlength="255" required="required"></textarea>
+                            <span class="global-error-block" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">*</span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-1">
+                            <select id="status" th:field="*{status}">
+                                <option th:value="NEW" th:text="New"></option>
+                                <option th:value="OPEN" th:text="Open"></option>
+                                <option th:value="CLOSED" th:text="Closed"></option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-group row">
+                    <button class="btn project-form-button btn-primary" type="submit" name="action">Save</button>
+                    <a class="btn project-form-button btn-secondary" th:href="@{'/home'}">Cancel</a>
+                </div>
+
+                <input type="hidden" th:value="${project.id}" th:attr="name='id'"/>
+            </form>
+        </div>
+    </section>
+</main>
+
+</body>
+
+</html>

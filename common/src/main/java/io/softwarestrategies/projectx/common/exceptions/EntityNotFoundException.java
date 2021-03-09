@@ -1,4 +1,4 @@
-package io.softwarestrategies.projectx.resource.exception;
+package io.softwarestrategies.projectx.common.exceptions;
 
 public class EntityNotFoundException extends Exception {
     public EntityNotFoundException(String errorMessage) {

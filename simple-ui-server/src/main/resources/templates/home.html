@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout/layout">
+
+<head>
+    <title>ProjectX | Home</title>
+    <meta name="keywords" content=""/>
+    <link rel="stylesheet" th:href="@{/css/projectx-ui.css}"/>
+</head>
+
+<body>
+
+<main role="main" layout:fragment="content">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1>Projects:</h1>
+            <a th:href="@{/view-project}" class="btn btn-primary float-right">Create Project</a> <br /> <br />
+            <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Name</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${projects.empty}">
+                    <td colspan="4">No projects</td>
+                </tr>
+                <tr th:each="project : ${projects}">
+                    <td><span th:text="${project.id}"> ID </span></td>
+                    <td><span th:text="${project.name}"> Name </span></td>
+                    <td>
+                        <a class="btn btn-secondary" th:href="@{'/view-project/' + ${project.id}}">View</a>
+                        <a class="btn btn-secondary" th:href="@{'/delete-project/' + ${project.id}}">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+</body>
+
+</html>

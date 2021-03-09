@@ -9,6 +9,6 @@ public interface ProjectService {
     Flux<Project> findAll();
     Mono<Project> findById(Integer id);
     Mono<Project> create(Project project);
-    Mono<Project> update(Integer id, Project project);
+    Mono<Project> patch(Integer id, Project project);
     Mono<Void> delete(Integer id);
 }

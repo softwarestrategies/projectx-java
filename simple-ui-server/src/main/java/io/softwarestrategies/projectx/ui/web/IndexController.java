@@ -1,4 +1,4 @@
-package io.softwarestrategies.projectx.ui.controller;
+package io.softwarestrategies.projectx.ui.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,0 +1,81 @@
+.global-error-block {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: red;
+}
+
+.project-form {
+    max-width: 500px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.project-form-controls {
+    margin-top: 30px;
+}
+
+.project-form-button {
+    margin: 10px;
+    width: 125px;
+"
+}
+
+
+.registration-form {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.registration-form .form-login-heading, .f {
+    margin-bottom: 10px;
+}
+
+.registration-form .checkbox {
+    font-weight: normal;
+}
+
+.registration-form .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.registration-form .form-control:focus {
+    z-index: 2;
+}
+
+.registration-form input {
+    margin-top: 10px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.registration-form-inputs {
+    padding-top: 20px;
+}
+
+.registration-form button {
+    margin-top: 10px;
+}
+
+.registration-form-buttons {
+    padding-top: 20px;
+}
+
+.registration-form-error {
+    padding: 10px;
+    color: red;
+}
+
+.form-login .registrationPageLinkDiv {
+    padding-top: 20px
+}
+
+.registration-form-heading {
+    padding-top: 20px;
+}
